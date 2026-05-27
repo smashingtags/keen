@@ -24,7 +24,7 @@ password = 'your-api-token'
 ### Verify
 
 ```bash
-atlas-cli doctor
+keen doctor
 ```
 
 Expected output:

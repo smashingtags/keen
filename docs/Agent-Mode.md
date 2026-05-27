@@ -14,13 +14,13 @@ Auth: `export JIRA_CLOUD_PLATFORM_USERNAME=... JIRA_CLOUD_PLATFORM_PASSWORD=...`
 
 ## MCP Server
 
-The `atlas-mcp` binary exposes all 1,091 tools as MCP tools. Add to your MCP config:
+The `keen-mcp` binary exposes all 1,091 tools as MCP tools. Add to your MCP config:
 
 ```json
 {
   "mcpServers": {
-    "atlas": {
-      "command": "/path/to/atlas-mcp",
+    "keen": {
+      "command": "/path/to/keen-mcp",
       "env": {
         "JIRA_CLOUD_PLATFORM_USERNAME": "you@example.com",
         "JIRA_CLOUD_PLATFORM_PASSWORD": "your-token"
@@ -35,9 +35,9 @@ The `atlas-mcp` binary exposes all 1,091 tools as MCP tools. Add to your MCP con
 Agents should use `which` to find commands:
 
 ```bash
-atlas-cli which "create sprint"
-atlas-cli which "search page"
-atlas-cli which "addon version"
+keen which "create sprint"
+keen which "search page"
+keen which "addon version"
 ```
 
 ## Output Parsing

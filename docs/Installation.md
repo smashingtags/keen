@@ -10,23 +10,23 @@
 ```bash
 git clone https://github.com/smashingtags/jira-pp-cli.git
 cd jira-pp-cli
-go build -o atlas-cli ./cmd/jira-pp-cli-pp-cli/
+go build -o keen ./cmd/jira-pp-cli-pp-cli/
 ```
 
 Move the binary to your PATH:
 
 ```bash
 # macOS/Linux
-sudo mv atlas-cli /usr/local/bin/
+sudo mv keen /usr/local/bin/
 
 # Or symlink
-ln -s $(pwd)/atlas-cli ~/go/bin/atlas-cli
+ln -s $(pwd)/keen ~/go/bin/keen
 ```
 
 ## MCP Server
 
 ```bash
-go build -o atlas-mcp ./cmd/jira-pp-cli-pp-mcp/
+go build -o keen-mcp ./cmd/jira-pp-cli-pp-mcp/
 ```
 
 The MCP server exposes all 1,091 tools over the Model Context Protocol (stdio transport). Add to your MCP config:
@@ -34,8 +34,8 @@ The MCP server exposes all 1,091 tools over the Model Context Protocol (stdio tr
 ```json
 {
   "mcpServers": {
-    "atlas": {
-      "command": "/path/to/atlas-mcp",
+    "keen": {
+      "command": "/path/to/keen-mcp",
       "args": []
     }
   }
@@ -45,8 +45,8 @@ The MCP server exposes all 1,091 tools over the Model Context Protocol (stdio tr
 ## Verify
 
 ```bash
-atlas-cli doctor
-atlas-cli --version
+keen doctor
+keen --version
 ```
 
 ## Batch Install (Printing Press Library CLIs)

@@ -2,8 +2,8 @@
 bin/
 jira-pp-cli-pp-cli
 jira-pp-cli-pp-mcp
-atlas-cli
-atlas-mcp
+keen
+keen-mcp
 *.exe
 *.dll
 *.so

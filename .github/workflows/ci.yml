@@ -18,8 +18,8 @@ jobs:
 
       - name: Build
         run: |
-          go build -o bin/atlas-cli ./cmd/jira-pp-cli-pp-cli/
-          go build -o bin/atlas-mcp ./cmd/jira-pp-cli-pp-mcp/
+          go build -o bin/keen ./cmd/jira-pp-cli-pp-cli/
+          go build -o bin/keen-mcp ./cmd/jira-pp-cli-pp-mcp/
 
       - name: Test
         run: go test ./...

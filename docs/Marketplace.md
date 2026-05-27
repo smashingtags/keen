@@ -4,36 +4,36 @@
 
 ```bash
 # Get addon
-atlas-cli addons get io.imogenlabs.story-points-auditor --agent
+keen addons get io.imogenlabs.story-points-auditor --agent
 
 # List vendor's addons
-atlas-cli addons get-vendor 183012220 --agent
+keen addons get-vendor 183012220 --agent
 
 # Search marketplace
-atlas-cli addons list-search --q "story points" --agent
+keen addons list-search --q "story points" --agent
 
 # Create addon
-atlas-cli addons create --stdin < addon.json
+keen addons create --stdin < addon.json
 
 # Update addon (JSON Patch)
-atlas-cli addons update io.imogenlabs.story-points-auditor --stdin < patch.json
+keen addons update io.imogenlabs.story-points-auditor --stdin < patch.json
 ```
 
 ## Versions
 
 ```bash
 # Get versions
-atlas-cli addons versions get io.imogenlabs.story-points-auditor --agent
+keen addons versions get io.imogenlabs.story-points-auditor --agent
 
 # Create version
-atlas-cli addons versions create io.imogenlabs.story-points-auditor --stdin < version.json
+keen addons versions create io.imogenlabs.story-points-auditor --stdin < version.json
 ```
 
 ## Distribution
 
 ```bash
 # Get distribution status
-atlas-cli addons distribution get io.imogenlabs.story-points-auditor --agent
+keen addons distribution get io.imogenlabs.story-points-auditor --agent
 ```
 
 ## Imogen Labs Apps

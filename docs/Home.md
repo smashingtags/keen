@@ -1,4 +1,4 @@
-# Atlas CLI Wiki
+# Keen Wiki
 
 **The complete Atlassian platform CLI.** 1,091 endpoints across 6 APIs.
 
@@ -15,4 +15,4 @@
 - [[Agent Mode]] — Using the CLI with AI agents (Claude Code, Codex, etc.)
 - [[Local Sync & Search]] — SQLite caching, offline search, analytics
 - [[Regeneration]] — How to regenerate from updated OpenAPI specs
-- [[Deployed Machines]] — Where Atlas CLI is installed across the fleet
+- [[Deployed Machines]] — Where Keen is installed across the fleet

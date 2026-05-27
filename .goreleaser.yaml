@@ -1,11 +1,11 @@
 version: 2
-project_name: atlas-cli
+project_name: keen
 changelog:
   disable: true
 builds:
-  - id: atlas-cli
+  - id: keen
     main: ./cmd/jira-pp-cli-pp-cli
-    binary: atlas-cli
+    binary: keen
     env:
       - CGO_ENABLED=0
     ldflags:
@@ -14,9 +14,9 @@ builds:
       - darwin_arm64
       - linux_amd64
       - linux_arm64
-  - id: atlas-mcp
+  - id: keen-mcp
     main: ./cmd/jira-pp-cli-pp-mcp
-    binary: atlas-mcp
+    binary: keen-mcp
     env:
       - CGO_ENABLED=0
     ldflags:
@@ -31,12 +31,12 @@ archives:
 checksum:
   name_template: checksums.txt
 brews:
-  - name: atlas-cli
+  - name: keen
     repository:
       owner: smashingtags
       name: homebrew-tap
     homepage: "https://github.com/smashingtags/jira-pp-cli"
     description: "Complete Atlassian platform CLI with MCP server and SQLite sync"
     install: |
-      bin.install "atlas-cli"
-      bin.install "atlas-mcp"
+      bin.install "keen"
+      bin.install "keen-mcp"
