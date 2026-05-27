@@ -8,7 +8,7 @@
 ## From Source
 
 ```bash
-git clone https://github.com/smashingtags/jira-pp-cli.git
+git clone https://github.com/smashingtags/keen.git
 cd jira-pp-cli
 go build -o keen ./cmd/jira-pp-cli-pp-cli/
 ```

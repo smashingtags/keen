@@ -3,20 +3,20 @@
 <p align="center"><strong>The complete Atlassian platform CLI.</strong></p>
 
 <p align="center">
-    <a href="https://github.com/smashingtags/jira-pp-cli/releases/latest">
-        <img src="https://img.shields.io/github/v/release/smashingtags/jira-pp-cli?label=Release&logo=github" alt="Release">
+    <a href="https://github.com/smashingtags/keen/releases/latest">
+        <img src="https://img.shields.io/github/v/release/smashingtags/keen?label=Release&logo=github" alt="Release">
     </a>
-    <a href="https://github.com/smashingtags/jira-pp-cli/blob/main/LICENSE">
+    <a href="https://github.com/smashingtags/keen/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="Apache 2.0 License">
     </a>
     <a href="https://go.dev">
-        <img src="https://img.shields.io/github/go-mod/go-version/smashingtags/jira-pp-cli" alt="Go Version">
+        <img src="https://img.shields.io/github/go-mod/go-version/smashingtags/keen" alt="Go Version">
     </a>
-    <a href="https://github.com/smashingtags/jira-pp-cli/actions/workflows/ci.yml">
-        <img src="https://github.com/smashingtags/jira-pp-cli/actions/workflows/ci.yml/badge.svg" alt="CI">
+    <a href="https://github.com/smashingtags/keen/actions/workflows/ci.yml">
+        <img src="https://github.com/smashingtags/keen/actions/workflows/ci.yml/badge.svg" alt="CI">
     </a>
-    <a href="https://goreportcard.com/report/github.com/smashingtags/jira-pp-cli">
-        <img src="https://goreportcard.com/badge/github.com/smashingtags/jira-pp-cli" alt="Go Report Card">
+    <a href="https://goreportcard.com/report/github.com/smashingtags/keen">
+        <img src="https://goreportcard.com/badge/github.com/smashingtags/keen" alt="Go Report Card">
     </a>
 </p>
 
@@ -82,16 +82,16 @@ brew install smashingtags/tap/keen
 
 ### Binary download
 
-Download from [GitHub Releases](https://github.com/smashingtags/jira-pp-cli/releases/latest):
+Download from [GitHub Releases](https://github.com/smashingtags/keen/releases/latest):
 
 ```bash
 # macOS (Apple Silicon)
-curl -L https://github.com/smashingtags/jira-pp-cli/releases/latest/download/keen_darwin_arm64.tar.gz | tar xz
+curl -L https://github.com/smashingtags/keen/releases/latest/download/keen_darwin_arm64.tar.gz | tar xz
 sudo mv keen_darwin_arm64/keen /usr/local/bin/
 sudo mv keen_darwin_arm64/keen-mcp /usr/local/bin/
 
 # Linux (x86_64)
-curl -L https://github.com/smashingtags/jira-pp-cli/releases/latest/download/keen_linux_amd64.tar.gz | tar xz
+curl -L https://github.com/smashingtags/keen/releases/latest/download/keen_linux_amd64.tar.gz | tar xz
 sudo mv keen_linux_amd64/keen /usr/local/bin/
 sudo mv keen_linux_amd64/keen-mcp /usr/local/bin/
 ```
@@ -99,8 +99,8 @@ sudo mv keen_linux_amd64/keen-mcp /usr/local/bin/
 ### From source
 
 ```bash
-git clone https://github.com/smashingtags/jira-pp-cli.git
-cd jira-pp-cli
+git clone https://github.com/smashingtags/keen.git
+cd keen
 make build-all   # builds bin/keen and bin/keen-mcp
 ```
 
