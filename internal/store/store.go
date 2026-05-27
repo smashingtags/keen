@@ -1247,21 +1247,21 @@ func (s *Store) migrate(ctx context.Context) error {
 		END`,
 		`CREATE TABLE IF NOT EXISTS "approval" (
 			"id" TEXT PRIMARY KEY,
-			"addons_id" TEXT NOT NULL,
+			"addons_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_approval_addons_id" ON "approval"("addons_id")`,
 		`CREATE TABLE IF NOT EXISTS "distribution" (
 			"id" TEXT PRIMARY KEY,
-			"addons_id" TEXT NOT NULL,
+			"addons_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_distribution_addons_id" ON "distribution"("addons_id")`,
 		`CREATE TABLE IF NOT EXISTS "feedbacks" (
 			"id" TEXT PRIMARY KEY,
-			"addons_id" TEXT NOT NULL,
+			"addons_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -1270,42 +1270,42 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_feedbacks_parent_id" ON "feedbacks"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "migration" (
 			"id" TEXT PRIMARY KEY,
-			"addons_id" TEXT NOT NULL,
+			"addons_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_migration_addons_id" ON "migration"("addons_id")`,
 		`CREATE TABLE IF NOT EXISTS "pricing" (
 			"id" TEXT PRIMARY KEY,
-			"addons_id" TEXT NOT NULL,
+			"addons_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_pricing_addons_id" ON "pricing"("addons_id")`,
 		`CREATE TABLE IF NOT EXISTS "privacy_and_security" (
 			"id" TEXT PRIMARY KEY,
-			"addons_id" TEXT NOT NULL,
+			"addons_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_privacy_and_security_addons_id" ON "privacy_and_security"("addons_id")`,
 		`CREATE TABLE IF NOT EXISTS "recommendations" (
 			"id" TEXT PRIMARY KEY,
-			"addons_id" TEXT NOT NULL,
+			"addons_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_recommendations_addons_id" ON "recommendations"("addons_id")`,
 		`CREATE TABLE IF NOT EXISTS "release" (
 			"id" TEXT PRIMARY KEY,
-			"addons_id" TEXT NOT NULL,
+			"addons_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_release_addons_id" ON "release"("addons_id")`,
 		`CREATE TABLE IF NOT EXISTS "reviews" (
 			"id" TEXT PRIMARY KEY,
-			"addons_id" TEXT NOT NULL,
+			"addons_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -1314,14 +1314,14 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_reviews_parent_id" ON "reviews"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "tokens" (
 			"id" TEXT PRIMARY KEY,
-			"addons_id" TEXT NOT NULL,
+			"addons_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_tokens_addons_id" ON "tokens"("addons_id")`,
 		`CREATE TABLE IF NOT EXISTS "addons_versions" (
 			"id" TEXT PRIMARY KEY,
-			"addons_id" TEXT NOT NULL,
+			"addons_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -1330,7 +1330,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_addons_versions_parent_id" ON "addons_versions"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "watch" (
 			"id" TEXT PRIMARY KEY,
-			"addons_id" TEXT NOT NULL,
+			"addons_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -1446,7 +1446,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		)`,
 		`CREATE TABLE IF NOT EXISTS "applications_versions" (
 			"id" TEXT PRIMARY KEY,
-			"applications_id" TEXT NOT NULL,
+			"applications_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -1514,14 +1514,14 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_atlassian_access_users_parent_id" ON "atlassian_access_users"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "role_assignments" (
 			"id" TEXT PRIMARY KEY,
-			"atlassian_access_users_id" TEXT NOT NULL,
+			"atlassian_access_users_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_role_assignments_atlassian_access_users_id" ON "role_assignments"("atlassian_access_users_id")`,
 		`CREATE TABLE IF NOT EXISTS "roles" (
 			"id" TEXT PRIMARY KEY,
-			"atlassian_access_users_id" TEXT NOT NULL,
+			"atlassian_access_users_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -1586,14 +1586,14 @@ func (s *Store) migrate(ctx context.Context) error {
 		)`,
 		`CREATE TABLE IF NOT EXISTS "expand" (
 			"id" TEXT PRIMARY KEY,
-			"attachment_id" TEXT NOT NULL,
+			"attachment_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_expand_attachment_id" ON "expand"("attachment_id")`,
 		`CREATE TABLE IF NOT EXISTS "system" (
 			"id" TEXT PRIMARY KEY,
-			"avatar_id" TEXT NOT NULL,
+			"avatar_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -1646,7 +1646,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		)`,
 		`CREATE TABLE IF NOT EXISTS "comment_properties" (
 			"id" TEXT PRIMARY KEY,
-			"comment_id" TEXT NOT NULL,
+			"comment_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -1697,7 +1697,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		END`,
 		`CREATE TABLE IF NOT EXISTS "component_related_issue_counts" (
 			"id" TEXT PRIMARY KEY,
-			"component_id" TEXT NOT NULL,
+			"component_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -1802,21 +1802,21 @@ func (s *Store) migrate(ctx context.Context) error {
 		END`,
 		`CREATE TABLE IF NOT EXISTS "copy" (
 			"id" TEXT PRIMARY KEY,
-			"dashboard_id" TEXT NOT NULL,
+			"dashboard_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_copy_dashboard_id" ON "copy"("dashboard_id")`,
 		`CREATE TABLE IF NOT EXISTS "gadget" (
 			"id" TEXT PRIMARY KEY,
-			"dashboard_id" TEXT NOT NULL,
+			"dashboard_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_gadget_dashboard_id" ON "gadget"("dashboard_id")`,
 		`CREATE TABLE IF NOT EXISTS "items" (
 			"id" TEXT PRIMARY KEY,
-			"dashboard_id" TEXT NOT NULL,
+			"dashboard_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -1944,7 +1944,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_directories_parent_id" ON "directories"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "directories_groups" (
 			"id" TEXT PRIMARY KEY,
-			"directories_id" TEXT NOT NULL,
+			"directories_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -1953,7 +1953,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_directories_groups_parent_id" ON "directories_groups"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "directories_users" (
 			"id" TEXT PRIMARY KEY,
-			"directories_id" TEXT NOT NULL,
+			"directories_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -2022,7 +2022,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		)`,
 		`CREATE TABLE IF NOT EXISTS "association" (
 			"id" TEXT PRIMARY KEY,
-			"field_id" TEXT NOT NULL,
+			"field_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -2031,7 +2031,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_association_parent_id" ON "association"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "context" (
 			"id" TEXT PRIMARY KEY,
-			"field_id" TEXT NOT NULL,
+			"field_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -2040,7 +2040,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_context_parent_id" ON "context"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "contexts" (
 			"id" TEXT PRIMARY KEY,
-			"field_id" TEXT NOT NULL,
+			"field_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -2049,7 +2049,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_contexts_parent_id" ON "contexts"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "option" (
 			"id" TEXT PRIMARY KEY,
-			"field_id" TEXT NOT NULL,
+			"field_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -2058,14 +2058,14 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_option_parent_id" ON "option"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "field_restore" (
 			"id" TEXT PRIMARY KEY,
-			"field_id" TEXT NOT NULL,
+			"field_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_field_restore_field_id" ON "field_restore"("field_id")`,
 		`CREATE TABLE IF NOT EXISTS "field_screens" (
 			"id" TEXT PRIMARY KEY,
-			"field_id" TEXT NOT NULL,
+			"field_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -2074,7 +2074,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_field_screens_parent_id" ON "field_screens"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "trash" (
 			"id" TEXT PRIMARY KEY,
-			"field_id" TEXT NOT NULL,
+			"field_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -2092,7 +2092,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		)`,
 		`CREATE TABLE IF NOT EXISTS "fields" (
 			"id" TEXT PRIMARY KEY,
-			"fieldconfiguration_id" TEXT NOT NULL,
+			"fieldconfiguration_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -2112,7 +2112,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		)`,
 		`CREATE TABLE IF NOT EXISTS "fieldconfigurationscheme_mapping" (
 			"id" TEXT PRIMARY KEY,
-			"fieldconfigurationscheme_id" TEXT NOT NULL,
+			"fieldconfigurationscheme_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -2162,28 +2162,28 @@ func (s *Store) migrate(ctx context.Context) error {
 		END`,
 		`CREATE TABLE IF NOT EXISTS "columns" (
 			"id" TEXT PRIMARY KEY,
-			"filter_id" TEXT NOT NULL,
+			"filter_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_columns_filter_id" ON "columns"("filter_id")`,
 		`CREATE TABLE IF NOT EXISTS "favourite" (
 			"id" TEXT PRIMARY KEY,
-			"filter_id" TEXT NOT NULL,
+			"filter_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_favourite_filter_id" ON "favourite"("filter_id")`,
 		`CREATE TABLE IF NOT EXISTS "owner" (
 			"id" TEXT PRIMARY KEY,
-			"filter_id" TEXT NOT NULL,
+			"filter_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_owner_filter_id" ON "owner"("filter_id")`,
 		`CREATE TABLE IF NOT EXISTS "filter_permission" (
 			"id" TEXT PRIMARY KEY,
-			"filter_id" TEXT NOT NULL,
+			"filter_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -2226,84 +2226,84 @@ func (s *Store) migrate(ctx context.Context) error {
 		)`,
 		`CREATE TABLE IF NOT EXISTS "assignee" (
 			"id" TEXT PRIMARY KEY,
-			"issue_id" TEXT NOT NULL,
+			"issue_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_assignee_issue_id" ON "assignee"("issue_id")`,
 		`CREATE TABLE IF NOT EXISTS "attachments" (
 			"id" TEXT PRIMARY KEY,
-			"issue_id" TEXT NOT NULL,
+			"issue_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_attachments_issue_id" ON "attachments"("issue_id")`,
 		`CREATE TABLE IF NOT EXISTS "issue_changelog" (
 			"id" TEXT PRIMARY KEY,
-			"issue_id" TEXT NOT NULL,
+			"issue_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_issue_changelog_issue_id" ON "issue_changelog"("issue_id")`,
 		`CREATE TABLE IF NOT EXISTS "issue_comment" (
 			"id" TEXT PRIMARY KEY,
-			"issue_id" TEXT NOT NULL,
+			"issue_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_issue_comment_issue_id" ON "issue_comment"("issue_id")`,
 		`CREATE TABLE IF NOT EXISTS "editmeta" (
 			"id" TEXT PRIMARY KEY,
-			"issue_id" TEXT NOT NULL,
+			"issue_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_editmeta_issue_id" ON "editmeta"("issue_id")`,
 		`CREATE TABLE IF NOT EXISTS "notify" (
 			"id" TEXT PRIMARY KEY,
-			"issue_id" TEXT NOT NULL,
+			"issue_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_notify_issue_id" ON "notify"("issue_id")`,
 		`CREATE TABLE IF NOT EXISTS "issue_properties" (
 			"id" TEXT PRIMARY KEY,
-			"issue_id" TEXT NOT NULL,
+			"issue_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_issue_properties_issue_id" ON "issue_properties"("issue_id")`,
 		`CREATE TABLE IF NOT EXISTS "remotelink" (
 			"id" TEXT PRIMARY KEY,
-			"issue_id" TEXT NOT NULL,
+			"issue_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_remotelink_issue_id" ON "remotelink"("issue_id")`,
 		`CREATE TABLE IF NOT EXISTS "transitions" (
 			"id" TEXT PRIMARY KEY,
-			"issue_id" TEXT NOT NULL,
+			"issue_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_transitions_issue_id" ON "transitions"("issue_id")`,
 		`CREATE TABLE IF NOT EXISTS "votes" (
 			"id" TEXT PRIMARY KEY,
-			"issue_id" TEXT NOT NULL,
+			"issue_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_votes_issue_id" ON "votes"("issue_id")`,
 		`CREATE TABLE IF NOT EXISTS "watchers" (
 			"id" TEXT PRIMARY KEY,
-			"issue_id" TEXT NOT NULL,
+			"issue_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_watchers_issue_id" ON "watchers"("issue_id")`,
 		`CREATE TABLE IF NOT EXISTS "issue_worklog" (
 			"id" TEXT PRIMARY KEY,
-			"issue_id" TEXT NOT NULL,
+			"issue_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -2373,14 +2373,14 @@ func (s *Store) migrate(ctx context.Context) error {
 		END`,
 		`CREATE TABLE IF NOT EXISTS "level" (
 			"id" TEXT PRIMARY KEY,
-			"issuesecurityschemes_id" TEXT NOT NULL,
+			"issuesecurityschemes_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_level_issuesecurityschemes_id" ON "level"("issuesecurityschemes_id")`,
 		`CREATE TABLE IF NOT EXISTS "members" (
 			"id" TEXT PRIMARY KEY,
-			"issuesecurityschemes_id" TEXT NOT NULL,
+			"issuesecurityschemes_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -2423,21 +2423,21 @@ func (s *Store) migrate(ctx context.Context) error {
 		END`,
 		`CREATE TABLE IF NOT EXISTS "alternatives" (
 			"id" TEXT PRIMARY KEY,
-			"issuetype_id" TEXT NOT NULL,
+			"issuetype_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_alternatives_issuetype_id" ON "alternatives"("issuetype_id")`,
 		`CREATE TABLE IF NOT EXISTS "issuetype_avatar2" (
 			"id" TEXT PRIMARY KEY,
-			"issuetype_id" TEXT NOT NULL,
+			"issuetype_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_issuetype_avatar2_issuetype_id" ON "issuetype_avatar2"("issuetype_id")`,
 		`CREATE TABLE IF NOT EXISTS "issuetype_properties" (
 			"id" TEXT PRIMARY KEY,
-			"issuetype_id" TEXT NOT NULL,
+			"issuetype_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -2455,7 +2455,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		)`,
 		`CREATE TABLE IF NOT EXISTS "issuetypescheme_issuetype" (
 			"id" TEXT PRIMARY KEY,
-			"issuetypescheme_id" TEXT NOT NULL,
+			"issuetypescheme_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -2473,14 +2473,14 @@ func (s *Store) migrate(ctx context.Context) error {
 		)`,
 		`CREATE TABLE IF NOT EXISTS "issuetypescreenscheme_mapping" (
 			"id" TEXT PRIMARY KEY,
-			"issuetypescreenscheme_id" TEXT NOT NULL,
+			"issuetypescreenscheme_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_issuetypescreenscheme_mapping_issuetypescreenscheme_id" ON "issuetypescreenscheme_mapping"("issuetypescreenscheme_id")`,
 		`CREATE TABLE IF NOT EXISTS "issuetypescreenscheme_project" (
 			"id" TEXT PRIMARY KEY,
-			"issuetypescreenscheme_id" TEXT NOT NULL,
+			"issuetypescreenscheme_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -2541,42 +2541,42 @@ func (s *Store) migrate(ctx context.Context) error {
 		END`,
 		`CREATE TABLE IF NOT EXISTS "mergeto" (
 			"id" TEXT PRIMARY KEY,
-			"jira_cloud_platform_version_id" TEXT NOT NULL,
+			"jira_cloud_platform_version_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_mergeto_jira_cloud_platform_version_id" ON "mergeto"("jira_cloud_platform_version_id")`,
 		`CREATE TABLE IF NOT EXISTS "move" (
 			"id" TEXT PRIMARY KEY,
-			"jira_cloud_platform_version_id" TEXT NOT NULL,
+			"jira_cloud_platform_version_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_move_jira_cloud_platform_version_id" ON "move"("jira_cloud_platform_version_id")`,
 		`CREATE TABLE IF NOT EXISTS "jira_cloud_platform_version_related_issue_counts" (
 			"id" TEXT PRIMARY KEY,
-			"jira_cloud_platform_version_id" TEXT NOT NULL,
+			"jira_cloud_platform_version_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_jira_cloud_platform_version_related_issue_counts_jira_cloud_platform_version_id" ON "jira_cloud_platform_version_related_issue_counts"("jira_cloud_platform_version_id")`,
 		`CREATE TABLE IF NOT EXISTS "relatedwork" (
 			"id" TEXT PRIMARY KEY,
-			"jira_cloud_platform_version_id" TEXT NOT NULL,
+			"jira_cloud_platform_version_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_relatedwork_jira_cloud_platform_version_id" ON "relatedwork"("jira_cloud_platform_version_id")`,
 		`CREATE TABLE IF NOT EXISTS "remove_and_swap" (
 			"id" TEXT PRIMARY KEY,
-			"jira_cloud_platform_version_id" TEXT NOT NULL,
+			"jira_cloud_platform_version_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_remove_and_swap_jira_cloud_platform_version_id" ON "remove_and_swap"("jira_cloud_platform_version_id")`,
 		`CREATE TABLE IF NOT EXISTS "unresolved_issue_count" (
 			"id" TEXT PRIMARY KEY,
-			"jira_cloud_platform_version_id" TEXT NOT NULL,
+			"jira_cloud_platform_version_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -2596,14 +2596,14 @@ func (s *Store) migrate(ctx context.Context) error {
 		)`,
 		`CREATE TABLE IF NOT EXISTS "jira_cloud_platform_workflow_project" (
 			"id" TEXT PRIMARY KEY,
-			"jira_cloud_platform_workflow_id" TEXT NOT NULL,
+			"jira_cloud_platform_workflow_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_jira_cloud_platform_workflow_project_jira_cloud_platform_workflow_id" ON "jira_cloud_platform_workflow_project"("jira_cloud_platform_workflow_id")`,
 		`CREATE TABLE IF NOT EXISTS "jira_cloud_platform_workflow_project_usages" (
 			"id" TEXT PRIMARY KEY,
-			"jira_cloud_platform_workflow_id" TEXT NOT NULL,
+			"jira_cloud_platform_workflow_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -2612,7 +2612,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_jira_cloud_platform_workflow_project_usages_parent_id" ON "jira_cloud_platform_workflow_project_usages"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "workflow_schemes" (
 			"id" TEXT PRIMARY KEY,
-			"jira_cloud_platform_workflow_id" TEXT NOT NULL,
+			"jira_cloud_platform_workflow_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -2719,7 +2719,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		END`,
 		`CREATE TABLE IF NOT EXISTS "notification" (
 			"id" TEXT PRIMARY KEY,
-			"notificationscheme_id" TEXT NOT NULL,
+			"notificationscheme_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -2796,7 +2796,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		END`,
 		`CREATE TABLE IF NOT EXISTS "permissionscheme_permission" (
 			"id" TEXT PRIMARY KEY,
-			"permissionscheme_id" TEXT NOT NULL,
+			"permissionscheme_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -2835,14 +2835,14 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_policies_parent_id" ON "policies"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "resources" (
 			"id" TEXT PRIMARY KEY,
-			"policies_id" TEXT NOT NULL,
+			"policies_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_resources_policies_id" ON "resources"("policies_id")`,
 		`CREATE TABLE IF NOT EXISTS "validate" (
 			"id" TEXT PRIMARY KEY,
-			"policies_id" TEXT NOT NULL,
+			"policies_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -2898,7 +2898,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		)`,
 		`CREATE TABLE IF NOT EXISTS "priorities" (
 			"id" TEXT PRIMARY KEY,
-			"priorityscheme_id" TEXT NOT NULL,
+			"priorityscheme_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -2907,7 +2907,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_priorities_parent_id" ON "priorities"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "priorityscheme_projects" (
 			"id" TEXT PRIMARY KEY,
-			"priorityscheme_id" TEXT NOT NULL,
+			"priorityscheme_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -3010,49 +3010,49 @@ func (s *Store) migrate(ctx context.Context) error {
 		END`,
 		`CREATE TABLE IF NOT EXISTS "archive" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_archive_project_id" ON "archive"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "project_avatar" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_project_avatar_project_id" ON "project_avatar"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "project_avatar2" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_project_avatar2_project_id" ON "project_avatar2"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "avatars" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_avatars_project_id" ON "avatars"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "classification_config" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_classification_config_project_id" ON "classification_config"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "classification_level" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_classification_level_project_id" ON "classification_level"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "project_component" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -3061,105 +3061,105 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_project_component_parent_id" ON "project_component"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "components" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_components_project_id" ON "components"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "delete" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_delete_project_id" ON "delete"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "email" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_email_project_id" ON "email"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "features" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_features_project_id" ON "features"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "hierarchy" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_hierarchy_project_id" ON "hierarchy"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "issuesecuritylevelscheme" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_issuesecuritylevelscheme_project_id" ON "issuesecuritylevelscheme"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "project_notificationscheme" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_project_notificationscheme_project_id" ON "project_notificationscheme"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "project_permissionscheme" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_project_permissionscheme_project_id" ON "project_permissionscheme"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "project_properties" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_project_properties_project_id" ON "project_properties"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "project_restore" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_project_restore_project_id" ON "project_restore"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "project_role" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_project_role_project_id" ON "project_role"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "roledetails" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_roledetails_project_id" ON "roledetails"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "project_securitylevel" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_project_securitylevel_project_id" ON "project_securitylevel"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "project_statuses" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_project_statuses_project_id" ON "project_statuses"("project_id")`,
 		`CREATE TABLE IF NOT EXISTS "version" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -3168,7 +3168,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_version_parent_id" ON "version"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "project_versions" (
 			"id" TEXT PRIMARY KEY,
-			"project_id" TEXT NOT NULL,
+			"project_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -3335,7 +3335,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		END`,
 		`CREATE TABLE IF NOT EXISTS "actors" (
 			"id" TEXT PRIMARY KEY,
-			"role_id" TEXT NOT NULL,
+			"role_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -3353,14 +3353,14 @@ func (s *Store) migrate(ctx context.Context) error {
 		)`,
 		`CREATE TABLE IF NOT EXISTS "available_fields" (
 			"id" TEXT PRIMARY KEY,
-			"screens_id" TEXT NOT NULL,
+			"screens_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_available_fields_screens_id" ON "available_fields"("screens_id")`,
 		`CREATE TABLE IF NOT EXISTS "tabs" (
 			"id" TEXT PRIMARY KEY,
-			"screens_id" TEXT NOT NULL,
+			"screens_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -3543,14 +3543,14 @@ func (s *Store) migrate(ctx context.Context) error {
 		END`,
 		`CREATE TABLE IF NOT EXISTS "statuses_project" (
 			"id" TEXT PRIMARY KEY,
-			"statuses_id" TEXT NOT NULL,
+			"statuses_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_statuses_project_statuses_id" ON "statuses_project"("statuses_id")`,
 		`CREATE TABLE IF NOT EXISTS "statuses_project_usages" (
 			"id" TEXT PRIMARY KEY,
-			"statuses_id" TEXT NOT NULL,
+			"statuses_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -3559,7 +3559,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_statuses_project_usages_parent_id" ON "statuses_project_usages"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "workflow_usages" (
 			"id" TEXT PRIMARY KEY,
-			"statuses_id" TEXT NOT NULL,
+			"statuses_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -3605,7 +3605,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		END`,
 		`CREATE TABLE IF NOT EXISTS "cancel" (
 			"id" TEXT PRIMARY KEY,
-			"task_id" TEXT NOT NULL,
+			"task_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -3696,28 +3696,28 @@ func (s *Store) migrate(ctx context.Context) error {
 		)`,
 		`CREATE TABLE IF NOT EXISTS "vendors_addons" (
 			"id" TEXT PRIMARY KEY,
-			"vendors_id" TEXT NOT NULL,
+			"vendors_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_vendors_addons_vendors_id" ON "vendors_addons"("vendors_id")`,
 		`CREATE TABLE IF NOT EXISTS "partner_metrics" (
 			"id" TEXT PRIMARY KEY,
-			"vendors_id" TEXT NOT NULL,
+			"vendors_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_partner_metrics_vendors_id" ON "partner_metrics"("vendors_id")`,
 		`CREATE TABLE IF NOT EXISTS "promotions" (
 			"id" TEXT PRIMARY KEY,
-			"vendors_id" TEXT NOT NULL,
+			"vendors_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_promotions_vendors_id" ON "promotions"("vendors_id")`,
 		`CREATE TABLE IF NOT EXISTS "reporting" (
 			"id" TEXT PRIMARY KEY,
-			"vendors_id" TEXT NOT NULL,
+			"vendors_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -3871,35 +3871,35 @@ func (s *Store) migrate(ctx context.Context) error {
 		END`,
 		`CREATE TABLE IF NOT EXISTS "createdraft" (
 			"id" TEXT PRIMARY KEY,
-			"workflowscheme_id" TEXT NOT NULL,
+			"workflowscheme_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_createdraft_workflowscheme_id" ON "createdraft"("workflowscheme_id")`,
 		`CREATE TABLE IF NOT EXISTS "default" (
 			"id" TEXT PRIMARY KEY,
-			"workflowscheme_id" TEXT NOT NULL,
+			"workflowscheme_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_default_workflowscheme_id" ON "default"("workflowscheme_id")`,
 		`CREATE TABLE IF NOT EXISTS "draft" (
 			"id" TEXT PRIMARY KEY,
-			"workflowscheme_id" TEXT NOT NULL,
+			"workflowscheme_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_draft_workflowscheme_id" ON "draft"("workflowscheme_id")`,
 		`CREATE TABLE IF NOT EXISTS "workflowscheme_issuetype" (
 			"id" TEXT PRIMARY KEY,
-			"workflowscheme_id" TEXT NOT NULL,
+			"workflowscheme_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
 		`CREATE INDEX IF NOT EXISTS "idx_workflowscheme_issuetype_workflowscheme_id" ON "workflowscheme_issuetype"("workflowscheme_id")`,
 		`CREATE TABLE IF NOT EXISTS "workflowscheme_project_usages" (
 			"id" TEXT PRIMARY KEY,
-			"workflowscheme_id" TEXT NOT NULL,
+			"workflowscheme_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP,
 			"parent_id" TEXT
@@ -3908,7 +3908,7 @@ func (s *Store) migrate(ctx context.Context) error {
 		`CREATE INDEX IF NOT EXISTS "idx_workflowscheme_project_usages_parent_id" ON "workflowscheme_project_usages"("parent_id")`,
 		`CREATE TABLE IF NOT EXISTS "workflow" (
 			"id" TEXT PRIMARY KEY,
-			"workflowscheme_id" TEXT NOT NULL,
+			"workflowscheme_id" TEXT,
 			"data" JSON NOT NULL,
 			"synced_at" DATETIME DEFAULT CURRENT_TIMESTAMP
 		)`,
@@ -4020,8 +4020,24 @@ func (s *Store) migrateResourcesCompositeKey(ctx context.Context, conn *sql.Conn
 		)`); err != nil {
 			return fmt.Errorf("creating resources_v2: %w", err)
 		}
-		if _, err := conn.ExecContext(ctx, `INSERT INTO resources_v2 (id, resource_type, data, synced_at, updated_at)
-			SELECT id, resource_type, data, synced_at, updated_at FROM resources`); err != nil {
+		hasResourceType, _ := columnExists(ctx, conn, "resources", "resource_type")
+		hasUpdatedAt, _ := columnExists(ctx, conn, "resources", "updated_at")
+		var copySQL string
+		switch {
+		case hasResourceType && hasUpdatedAt:
+			copySQL = `INSERT INTO resources_v2 (id, resource_type, data, synced_at, updated_at)
+				SELECT id, resource_type, data, synced_at, updated_at FROM resources`
+		case hasResourceType:
+			copySQL = `INSERT INTO resources_v2 (id, resource_type, data, synced_at, updated_at)
+				SELECT id, resource_type, data, synced_at, synced_at FROM resources`
+		case hasUpdatedAt:
+			copySQL = `INSERT INTO resources_v2 (id, resource_type, data, synced_at, updated_at)
+				SELECT id, '', data, synced_at, updated_at FROM resources`
+		default:
+			copySQL = `INSERT INTO resources_v2 (id, resource_type, data, synced_at, updated_at)
+				SELECT id, '', data, synced_at, synced_at FROM resources`
+		}
+		if _, err := conn.ExecContext(ctx, copySQL); err != nil {
 			return fmt.Errorf("copying resources rows: %w", err)
 		}
 		if _, err := conn.ExecContext(ctx, `DROP TABLE resources`); err != nil {
@@ -4053,6 +4069,27 @@ func tableExists(ctx context.Context, conn *sql.Conn, name string) (bool, error)
 		return false, fmt.Errorf("checking table %s: %w", name, err)
 	}
 	return count > 0, nil
+}
+
+func columnExists(ctx context.Context, conn *sql.Conn, table, column string) (bool, error) {
+	rows, err := conn.QueryContext(ctx, fmt.Sprintf(`PRAGMA table_info("%s")`, table))
+	if err != nil {
+		return false, err
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var cid int
+		var name, typ string
+		var notnull, pk int
+		var dflt sql.NullString
+		if err := rows.Scan(&cid, &name, &typ, &notnull, &dflt, &pk); err != nil {
+			return false, err
+		}
+		if name == column {
+			return true, nil
+		}
+	}
+	return false, rows.Err()
 }
 
 func resourcesTableHasCompositeKey(ctx context.Context, conn *sql.Conn) (bool, error) {

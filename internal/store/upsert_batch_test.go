@@ -432,8 +432,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandApprovalGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count approval: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("approval count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "addons_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -527,8 +527,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandDistributionGeneric(t *testing.T) 
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count distribution: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("distribution count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "addons_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -622,8 +622,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandFeedbacksGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count feedbacks: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("feedbacks count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "addons_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -749,8 +749,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandMigrationGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count migration: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("migration count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "addons_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -844,8 +844,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandPricingGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count pricing: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("pricing count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "addons_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -939,8 +939,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandPrivacyAndSecurityGeneric(t *testi
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count privacy_and_security: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("privacy_and_security count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "addons_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -1034,8 +1034,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandRecommendationsGeneric(t *testing.
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count recommendations: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("recommendations count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "addons_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -1129,8 +1129,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandReleaseGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count release: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("release count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "addons_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -1224,8 +1224,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandReviewsGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count reviews: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("reviews count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "addons_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -1351,8 +1351,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandTokensGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count tokens: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("tokens count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "addons_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -1446,8 +1446,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandAddonsVersionsGeneric(t *testing.T
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count addons_versions: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("addons_versions count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "addons_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -1573,8 +1573,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandWatchGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count watch: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("watch count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "addons_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -2026,8 +2026,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandApplicationsVersionsGeneric(t *tes
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count applications_versions: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("applications_versions count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "applications_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -2343,8 +2343,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandRoleAssignmentsGeneric(t *testing.
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count role_assignments: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("role_assignments count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "atlassian_access_users_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -2438,8 +2438,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandRolesGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count roles: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("roles count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "atlassian_access_users_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -2617,8 +2617,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandExpandGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count expand: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("expand count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "attachment_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -2712,8 +2712,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandSystemGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count system: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("system count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "avatar_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -2891,8 +2891,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandCommentPropertiesGeneric(t *testin
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count comment_properties: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("comment_properties count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "comment_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -3028,8 +3028,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandComponentRelatedIssueCountsGeneric
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count component_related_issue_counts: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("component_related_issue_counts count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "component_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -3249,8 +3249,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandCopyGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count copy: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("copy count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "dashboard_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -3344,8 +3344,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandGadgetGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count gadget: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("gadget count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "dashboard_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -3439,8 +3439,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandItemsGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count items: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("items count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "dashboard_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -3776,8 +3776,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandDirectoriesGroupsGeneric(t *testin
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count directories_groups: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("directories_groups count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "directories_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -3903,8 +3903,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandDirectoriesUsersGeneric(t *testing
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count directories_users: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("directories_users count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "directories_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -4346,8 +4346,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandAssociationGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count association: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("association count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "field_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -4473,8 +4473,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandContextGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count context: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("context count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "field_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -4600,8 +4600,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandContextsGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count contexts: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("contexts count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "field_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -4727,8 +4727,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandOptionGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count option: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("option count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "field_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -4854,8 +4854,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandFieldRestoreGeneric(t *testing.T) 
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count field_restore: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("field_restore count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "field_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -4949,8 +4949,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandFieldScreensGeneric(t *testing.T) 
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count field_screens: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("field_screens count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "field_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -5076,8 +5076,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandTrashGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count trash: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("trash count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "field_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -5213,8 +5213,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandFieldsGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count fields: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("fields count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "fieldconfiguration_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -5382,8 +5382,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandFieldconfigurationschemeMappingGen
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count fieldconfigurationscheme_mapping: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("fieldconfigurationscheme_mapping count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "fieldconfigurationscheme_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -5519,8 +5519,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandColumnsGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count columns: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("columns count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "filter_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -5614,8 +5614,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandFavouriteGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count favourite: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("favourite count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "filter_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -5709,8 +5709,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandOwnerGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count owner: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("owner count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "filter_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -5804,8 +5804,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandFilterPermissionGeneric(t *testing
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count filter_permission: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("filter_permission count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "filter_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -6025,8 +6025,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandAssigneeGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count assignee: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("assignee count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issue_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -6120,8 +6120,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandAttachmentsGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count attachments: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("attachments count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issue_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -6215,8 +6215,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandIssueChangelogGeneric(t *testing.T
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count issue_changelog: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("issue_changelog count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issue_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -6310,8 +6310,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandIssueCommentGeneric(t *testing.T) 
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count issue_comment: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("issue_comment count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issue_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -6405,8 +6405,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandEditmetaGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count editmeta: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("editmeta count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issue_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -6500,8 +6500,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandNotifyGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count notify: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("notify count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issue_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -6595,8 +6595,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandIssuePropertiesGeneric(t *testing.
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count issue_properties: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("issue_properties count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issue_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -6690,8 +6690,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandRemotelinkGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count remotelink: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("remotelink count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issue_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -6785,8 +6785,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandTransitionsGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count transitions: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("transitions count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issue_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -6880,8 +6880,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandVotesGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count votes: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("votes count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issue_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -6975,8 +6975,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandWatchersGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count watchers: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("watchers count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issue_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -7070,8 +7070,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandIssueWorklogGeneric(t *testing.T) 
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count issue_worklog: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("issue_worklog count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issue_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -7333,8 +7333,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandLevelGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count level: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("level count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issuesecurityschemes_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -7428,8 +7428,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandMembersGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count members: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("members count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issuesecurityschemes_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -7597,8 +7597,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandAlternativesGeneric(t *testing.T) 
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count alternatives: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("alternatives count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issuetype_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -7692,8 +7692,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandIssuetypeAvatar2Generic(t *testing
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count issuetype_avatar2: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("issuetype_avatar2 count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issuetype_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -7787,8 +7787,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandIssuetypePropertiesGeneric(t *test
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count issuetype_properties: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("issuetype_properties count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issuetype_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -7924,8 +7924,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandIssuetypeschemeIssuetypeGeneric(t 
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count issuetypescheme_issuetype: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("issuetypescheme_issuetype count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issuetypescheme_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -8061,8 +8061,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandIssuetypescreenschemeMappingGeneri
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count issuetypescreenscheme_mapping: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("issuetypescreenscheme_mapping count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issuetypescreenscheme_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -8156,8 +8156,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandIssuetypescreenschemeProjectGeneri
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count issuetypescreenscheme_project: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("issuetypescreenscheme_project count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "issuetypescreenscheme_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -8367,8 +8367,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandMergetoGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count mergeto: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("mergeto count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "jira_cloud_platform_version_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -8462,8 +8462,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandMoveGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count move: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("move count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "jira_cloud_platform_version_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -8557,8 +8557,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandJiraCloudPlatformVersionRelatedIss
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count jira_cloud_platform_version_related_issue_counts: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("jira_cloud_platform_version_related_issue_counts count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "jira_cloud_platform_version_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -8652,8 +8652,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandRelatedworkGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count relatedwork: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("relatedwork count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "jira_cloud_platform_version_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -8747,8 +8747,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandRemoveAndSwapGeneric(t *testing.T)
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count remove_and_swap: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("remove_and_swap count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "jira_cloud_platform_version_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -8842,8 +8842,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandUnresolvedIssueCountGeneric(t *tes
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count unresolved_issue_count: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("unresolved_issue_count count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "jira_cloud_platform_version_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -8979,8 +8979,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandJiraCloudPlatformWorkflowProjectGe
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count jira_cloud_platform_workflow_project: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("jira_cloud_platform_workflow_project count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "jira_cloud_platform_workflow_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -9074,8 +9074,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandJiraCloudPlatformWorkflowProjectUs
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count jira_cloud_platform_workflow_project_usages: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("jira_cloud_platform_workflow_project_usages count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "jira_cloud_platform_workflow_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -9201,8 +9201,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandWorkflowSchemesGeneric(t *testing.
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count workflow_schemes: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("workflow_schemes count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "jira_cloud_platform_workflow_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -9622,8 +9622,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandNotificationGeneric(t *testing.T) 
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count notification: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("notification count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "notificationscheme_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -9843,8 +9843,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandPermissionschemePermissionGeneric(
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count permissionscheme_permission: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("permissionscheme_permission count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "permissionscheme_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -10086,8 +10086,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandResourcesGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count resources: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("resources count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "policies_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -10181,8 +10181,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandValidateGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count validate: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("validate count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "policies_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -10360,8 +10360,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandPrioritiesGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count priorities: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("priorities count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "priorityscheme_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -10487,8 +10487,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandPriorityschemeProjectsGeneric(t *t
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count priorityscheme_projects: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("priorityscheme_projects count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "priorityscheme_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -10698,8 +10698,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandArchiveGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count archive: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("archive count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -10793,8 +10793,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandProjectAvatarGeneric(t *testing.T)
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count project_avatar: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("project_avatar count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -10888,8 +10888,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandProjectAvatar2Generic(t *testing.T
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count project_avatar2: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("project_avatar2 count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -10983,8 +10983,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandAvatarsGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count avatars: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("avatars count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -11078,8 +11078,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandClassificationConfigGeneric(t *tes
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count classification_config: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("classification_config count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -11173,8 +11173,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandClassificationLevelGeneric(t *test
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count classification_level: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("classification_level count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -11268,8 +11268,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandProjectComponentGeneric(t *testing
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count project_component: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("project_component count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -11395,8 +11395,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandComponentsGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count components: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("components count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -11490,8 +11490,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandDeleteGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count delete: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("delete count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -11585,8 +11585,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandEmailGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count email: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("email count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -11680,8 +11680,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandFeaturesGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count features: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("features count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -11775,8 +11775,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandHierarchyGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count hierarchy: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("hierarchy count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -11870,8 +11870,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandIssuesecuritylevelschemeGeneric(t 
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count issuesecuritylevelscheme: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("issuesecuritylevelscheme count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -11965,8 +11965,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandProjectNotificationschemeGeneric(t
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count project_notificationscheme: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("project_notificationscheme count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -12060,8 +12060,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandProjectPermissionschemeGeneric(t *
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count project_permissionscheme: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("project_permissionscheme count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -12155,8 +12155,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandProjectPropertiesGeneric(t *testin
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count project_properties: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("project_properties count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -12250,8 +12250,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandProjectRestoreGeneric(t *testing.T
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count project_restore: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("project_restore count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -12345,8 +12345,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandProjectRoleGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count project_role: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("project_role count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -12440,8 +12440,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandRoledetailsGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count roledetails: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("roledetails count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -12535,8 +12535,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandProjectSecuritylevelGeneric(t *tes
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count project_securitylevel: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("project_securitylevel count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -12630,8 +12630,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandProjectStatusesGeneric(t *testing.
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count project_statuses: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("project_statuses count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -12725,8 +12725,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandVersionGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count version: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("version count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -12852,8 +12852,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandProjectVersionsGeneric(t *testing.
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count project_versions: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("project_versions count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "project_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -13283,8 +13283,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandActorsGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count actors: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("actors count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "role_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -13420,8 +13420,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandAvailableFieldsGeneric(t *testing.
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count available_fields: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("available_fields count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "screens_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -13515,8 +13515,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandTabsGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count tabs: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("tabs count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "screens_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -14030,8 +14030,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandStatusesProjectGeneric(t *testing.
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count statuses_project: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("statuses_project count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "statuses_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -14125,8 +14125,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandStatusesProjectUsagesGeneric(t *te
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count statuses_project_usages: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("statuses_project_usages count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "statuses_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -14252,8 +14252,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandWorkflowUsagesGeneric(t *testing.T
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count workflow_usages: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("workflow_usages count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "statuses_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -14421,8 +14421,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandCancelGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count cancel: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("cancel count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "task_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -14642,8 +14642,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandVendorsAddonsGeneric(t *testing.T)
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count vendors_addons: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("vendors_addons count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "vendors_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -14737,8 +14737,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandPartnerMetricsGeneric(t *testing.T
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count partner_metrics: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("partner_metrics count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "vendors_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -14832,8 +14832,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandPromotionsGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count promotions: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("promotions count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "vendors_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -14927,8 +14927,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandReportingGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count reporting: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("reporting count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "vendors_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -15222,8 +15222,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandCreatedraftGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count createdraft: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("createdraft count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "workflowscheme_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -15317,8 +15317,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandDefaultGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count default: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("default count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "workflowscheme_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -15412,8 +15412,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandDraftGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count draft: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("draft count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "workflowscheme_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -15507,8 +15507,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandWorkflowschemeIssuetypeGeneric(t *
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count workflowscheme_issuetype: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("workflowscheme_issuetype count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "workflowscheme_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -15602,8 +15602,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandWorkflowschemeProjectUsagesGeneric
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count workflowscheme_project_usages: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("workflowscheme_project_usages count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "workflowscheme_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
@@ -15729,8 +15729,8 @@ func TestUpsertBatch_TypedFailureDoesNotStrandWorkflowGeneric(t *testing.T) {
 	if err := db.QueryRow(typedQuery).Scan(&typed); err != nil {
 		t.Fatalf("count workflow: %v", err)
 	}
-	if typed != 0 {
-		t.Fatalf("workflow count = %d, want 0 (typed insert violated NOT NULL on %q)", typed, "workflowscheme_id")
+	if typed != len(items) {
+		t.Fatalf("typed count = %d, want %d (typed insert should succeed with nullable columns)", typed, len(items))
 	}
 }
 
