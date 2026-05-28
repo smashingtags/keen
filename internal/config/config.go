@@ -5,6 +5,7 @@ package config
 
 import (
 	"encoding/base64"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -15,18 +16,18 @@ import (
 )
 
 type Config struct {
-	BaseURL                   string            `toml:"base_url"`
-	AuthHeaderVal             string            `toml:"auth_header"`
-	Headers                   map[string]string `toml:"headers,omitempty"`
-	AuthSource                string            `toml:"-"`
-	AccessToken               string            `toml:"access_token"`
-	RefreshToken              string            `toml:"refresh_token"`
-	TokenExpiry               time.Time         `toml:"token_expiry"`
-	ClientID                  string            `toml:"client_id"`
-	ClientSecret              string            `toml:"client_secret"`
-	Path                      string            `toml:"-"`
-	JiraCloudPlatformUsername string            `toml:"cloud_platform_username"`
-	JiraCloudPlatformPassword string            `toml:"cloud_platform_password"`
+	BaseURL                   string            `toml:"base_url" json:"base_url,omitempty"`
+	AuthHeaderVal             string            `toml:"auth_header" json:"auth_header,omitempty"`
+	Headers                   map[string]string `toml:"headers,omitempty" json:"headers,omitempty"`
+	AuthSource                string            `toml:"-" json:"-"`
+	AccessToken               string            `toml:"access_token" json:"access_token,omitempty"`
+	RefreshToken              string            `toml:"refresh_token" json:"refresh_token,omitempty"`
+	TokenExpiry               time.Time         `toml:"token_expiry" json:"token_expiry,omitempty"`
+	ClientID                  string            `toml:"client_id" json:"client_id,omitempty"`
+	ClientSecret              string            `toml:"client_secret" json:"client_secret,omitempty"`
+	Path                      string            `toml:"-" json:"-"`
+	JiraCloudPlatformUsername string            `toml:"cloud_platform_username" json:"username,omitempty"`
+	JiraCloudPlatformPassword string            `toml:"cloud_platform_password" json:"password,omitempty"`
 }
 
 func Load(configPath string) (*Config, error) {
@@ -34,22 +35,40 @@ func Load(configPath string) (*Config, error) {
 		BaseURL: "https://your-domain.atlassian.net",
 	}
 
-	// Resolve config path
+	// Resolve config path: explicit flag > env var > ~/.config/keen/ > legacy path
 	path := configPath
 	if path == "" {
 		path = os.Getenv("JIRA_PP_CLI_CONFIG")
 	}
 	if path == "" {
 		home, _ := os.UserHomeDir()
-		path = filepath.Join(home, ".config", "jira-pp-cli-pp-cli", "config.toml")
+		keenJSON := filepath.Join(home, ".config", "keen", "auth.json")
+		keenTOML := filepath.Join(home, ".config", "keen", "config.toml")
+		legacyTOML := filepath.Join(home, ".config", "jira-pp-cli-pp-cli", "config.toml")
+		switch {
+		case fileExists(keenJSON):
+			path = keenJSON
+		case fileExists(keenTOML):
+			path = keenTOML
+		case fileExists(legacyTOML):
+			path = legacyTOML
+		default:
+			path = filepath.Join(home, ".config", "keen", "config.toml")
+		}
 	}
 	cfg.Path = path
 
-	// Try to load config file
+	// Try to load config file (JSON or TOML based on extension)
 	data, err := os.ReadFile(path)
 	if err == nil {
-		if err := toml.Unmarshal(data, cfg); err != nil {
-			return nil, fmt.Errorf("parsing config %s: %w", path, err)
+		if strings.HasSuffix(path, ".json") {
+			if err := json.Unmarshal(data, cfg); err != nil {
+				return nil, fmt.Errorf("parsing config %s: %w", path, err)
+			}
+		} else {
+			if err := toml.Unmarshal(data, cfg); err != nil {
+				return nil, fmt.Errorf("parsing config %s: %w", path, err)
+			}
 		}
 	}
 
@@ -164,6 +183,11 @@ func (c *Config) save() error {
 		return fmt.Errorf("marshaling config: %w", err)
 	}
 	return os.WriteFile(c.Path, data, 0o600)
+}
+
+func fileExists(path string) bool {
+	_, err := os.Stat(path)
+	return err == nil
 }
 
 // Ensure strings import is used

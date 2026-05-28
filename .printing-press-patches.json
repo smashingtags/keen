@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "applied_at": "2026-05-28",
+  "base_run_id": "see .printing-press.json",
+  "patches": [
+    {
+      "id": "compact-summary-field",
+      "summary": "Add 'summary' to compact keep-fields allow-list.",
+      "reason": "Jira issue search with --agent returned only 'id' because 'summary' wasn't in the keep-fields map. Also added field promotion from nested 'fields' sub-object to flatten Jira issue responses.",
+      "files": ["internal/cli/helpers.go"],
+      "validated_outcome": "keen find-issues --agent now returns key, summary, status for each issue."
+    },
+    {
+      "id": "keen-auth-config",
+      "summary": "Add ~/.config/keen/auth.json as credential fallback.",
+      "reason": "Agents must re-export JIRA_CLOUD_PLATFORM_USERNAME/PASSWORD env vars in every shell invocation. Config file fallback eliminates this friction.",
+      "files": ["internal/config/config.go"],
+      "validated_outcome": "keen doctor passes when credentials are in ~/.config/keen/auth.json and env vars are unset.",
+      "deferred_to_upstream": [
+        {
+          "feature": "Generator should emit config paths matching the CLI binary name, not the internal project slug",
+          "reason": "Default config path is ~/.config/jira-pp-cli-pp-cli/ which doesn't match the 'keen' binary name"
+        }
+      ]
+    },
+    {
+      "id": "top-level-aliases",
+      "summary": "Add find-issues, transition, sprints, get as top-level command aliases.",
+      "reason": "Most-used commands have 40-60 char paths (e.g. jira-cloud-platform-search and-reconsile-issues-using-jql-post). Aliases save agent tokens and reduce errors.",
+      "files": ["internal/cli/aliases.go", "internal/cli/root.go"],
+      "validated_outcome": "keen find-issues, keen transition, keen sprints, keen get all resolve correctly.",
+      "deferred_to_upstream": [
+        {
+          "feature": "Generator should support alias definitions in the spec or a sidecar config",
+          "reason": "Aliases are per-CLI customizations that should survive regeneration without a local patch file"
+        }
+      ]
+    }
+  ]
+}
