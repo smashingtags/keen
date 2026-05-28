@@ -1202,7 +1202,7 @@ func compactListFields(items []map[string]any) json.RawMessage {
 	keepFields := map[string]bool{
 		// Identity
 		"id": true, "name": true, "title": true, "identifier": true,
-		"code": true, "slug": true, "key": true,
+		"code": true, "slug": true, "key": true, "summary": true,
 		// Categorization
 		"status": true, "state": true, "type": true, "kind": true, "priority": true,
 		// Communication
@@ -1249,6 +1249,24 @@ func compactListFields(items []map[string]any) json.RawMessage {
 
 	filtered := make([]map[string]any, 0, len(items))
 	for _, item := range items {
+		// Promote scalar keep-fields from nested "fields" sub-object (Jira issue shape)
+		if fields, ok := item["fields"].(map[string]any); ok {
+			for k, v := range fields {
+				if keepFields[k] && isCompactScalar(v) {
+					if _, exists := item[k]; !exists {
+						item[k] = v
+					}
+				}
+				// Extract status name from nested status object
+				if k == "status" {
+					if statusObj, ok := v.(map[string]any); ok {
+						if name, ok := statusObj["name"].(string); ok {
+							item["status"] = name
+						}
+					}
+				}
+			}
+		}
 		compact := map[string]any{}
 		for k, v := range item {
 			if keepFields[k] {

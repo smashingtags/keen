@@ -360,6 +360,8 @@ Run 'jira-pp-cli-pp-cli doctor' to verify auth and connectivity.`,
 	rootCmd.AddCommand(newWorkspacesPromotedCmd(flags))
 	rootCmd.AddCommand(newVersionCliCmd())
 
+	addAliasCommands(rootCmd, flags)
+
 	return rootCmd
 }
 
